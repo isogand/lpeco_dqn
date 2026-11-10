@@ -178,7 +178,7 @@ def print_plan(proto, root):
           f"{proto['min_runs_at_check']} completed runs (gaps > {proto['gap_s']}s are not counted)")
     for k in (proto["phase1_trials"], proto["phase2_trials"]):
         c = T.run_counts(k, seeds_per_trial=proto["seeds_per_trial"])
-        hours = c["total"] * 500_000 / 11_356 / 3600
+        hours = c["total"] * proto["steps"] / 11_356 / 3600
         print(f"  {k} trials: {c['tuning']} tuning runs ({c['total']} runs in the whole experiment, "
               f"~{hours:.1f} h at the measured 4-worker rate)")
     for opt in T.OPTIMIZERS:
@@ -217,27 +217,41 @@ def main():
     pool = cf.ProcessPoolExecutor(max_workers=proto["workers"], mp_context=ctx)
     threads = [threading.Thread(target=driver, args=(opt, root, proto, pool, decision, decided, stop, errors))
                for opt in T.OPTIMIZERS]
+    interrupted = False
     try:
         for th in threads:
             th.start()
         for th in threads:
             th.join()
     except KeyboardInterrupt:
+        interrupted = True
         stop.set()
         log_event(root, "interrupted_by_user")
-        print("Interrupted. Run the same command again to resume.")
     finally:
         stop.set()
         pool.shutdown(wait=False, cancel_futures=True)
 
+    try:
+        for th in threads:  # let the drivers record their own errors before we look at them
+            th.join(timeout=120)
+    except KeyboardInterrupt:  # a second Ctrl-C during cleanup: still exit cleanly
+        interrupted = True
+    if interrupted:
+        print("Interrupted (messages from killed workers above are expected). "
+              "Run the same command again to resume; nothing finished is lost.")
+        sys.exit(130)
     if errors:
         print("ERRORS:", errors)
+        print("Fix the cause and run the same command again to resume.")
         sys.exit(1)
 
     summary = {}
     for opt in T.OPTIMIZERS:
         study = make_study(opt, root, proto)
         done = study.get_trials(deepcopy=False, states=(TS.COMPLETE,))
+        if not done:
+            summary[opt] = {"completed_trials": 0}
+            continue
         best = study.best_trial
         summary[opt] = {"completed_trials": len(done), "best_value": best.value, "best_params": best.params,
                         "best_lr_at_edge": T.lr_at_edge(opt, best.params["lr"])}
