@@ -1,0 +1,29 @@
+{
+  "started_at": 1794305821.8160808,
+  "protocol": {
+    "steps": 500000,
+    "learning_starts": 10000,
+    "eval_episodes": 20,
+    "phase1_trials": 48,
+    "phase2_trials": 64,
+    "seeds_per_trial": 3,
+    "check_after_active_s": 7200,
+    "min_runs_at_check": 130,
+    "gap_s": 300,
+    "workers": 4,
+    "sampler_seed": 0,
+    "n_startup_trials": 10,
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "unused_error_decay": 0.995,
+    "max_tuning_seed": 999
+  },
+  "python": "3.12.3 (v3.12.3:f6650f9ad7, Apr  9 2024, 08:18:48) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-14.5-x86_64-i386-64bit",
+  "versions": {
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "gymnasium": "1.0.0",
+    "optuna": "5.0.0"
+  }
+}
