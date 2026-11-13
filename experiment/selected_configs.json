@@ -1,0 +1,325 @@
+{
+  "rule": "highest mean final return over 5 fresh seeds; exact ties -> lower tuning trial number (D1)",
+  "settings": {
+    "steps": 500000,
+    "learning_starts": 10000,
+    "eval_episodes": 20,
+    "final_eval_every": 25000,
+    "final_seeds": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026,
+      2027,
+      2028,
+      2029
+    ],
+    "workers": 4
+  },
+  "selected": {
+    "adam": {
+      "trial": 6,
+      "rank": 4,
+      "reeval_mean": 500.0,
+      "reeval_values": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "config": {
+        "lr": 0.0001326795426943025,
+        "target_every": 250,
+        "cs": 0.0,
+        "error_decay": 0.995,
+        "beta1": 0.9,
+        "beta2": 0.99,
+        "buffer": 10000,
+        "batch": 128,
+        "gamma": 0.99,
+        "train_every": 10,
+        "learning_starts": 10000,
+        "eps_start": 1.0,
+        "eps_end": 0.05,
+        "eps_fraction": 0.5,
+        "eval_every": 500000,
+        "eval_episodes": 20
+      },
+      "lr_at_edge": false
+    },
+    "lion": {
+      "trial": 14,
+      "rank": 2,
+      "reeval_mean": 405.35,
+      "reeval_values": [
+        500.0,
+        500.0,
+        499.8,
+        250.45,
+        276.5
+      ],
+      "config": {
+        "lr": 0.0001409278982107931,
+        "target_every": 500,
+        "cs": 0.0,
+        "error_decay": 0.995,
+        "beta1": 0.9,
+        "beta2": 0.99,
+        "buffer": 10000,
+        "batch": 128,
+        "gamma": 0.99,
+        "train_every": 10,
+        "learning_starts": 10000,
+        "eps_start": 1.0,
+        "eps_end": 0.05,
+        "eps_fraction": 0.5,
+        "eval_every": 500000,
+        "eval_episodes": 20
+      },
+      "lr_at_edge": false
+    },
+    "lpeco": {
+      "trial": 22,
+      "rank": 3,
+      "reeval_mean": 500.0,
+      "reeval_values": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ],
+      "config": {
+        "lr": 3.7761220088309956e-05,
+        "target_every": 250,
+        "cs": 0.3357428688741876,
+        "error_decay": 0.9873045232618487,
+        "beta1": 0.9,
+        "beta2": 0.99,
+        "buffer": 10000,
+        "batch": 128,
+        "gamma": 0.99,
+        "train_every": 10,
+        "learning_starts": 10000,
+        "eps_start": 1.0,
+        "eps_end": 0.05,
+        "eps_fraction": 0.5,
+        "eval_every": 500000,
+        "eval_episodes": 20
+      },
+      "lr_at_edge": false
+    }
+  },
+  "reeval_table": {
+    "adam": [
+      {
+        "rank": 0,
+        "trial": 0,
+        "mean": 439.21999999999997,
+        "values": [
+          500.0,
+          500.0,
+          500.0,
+          412.15,
+          283.95
+        ]
+      },
+      {
+        "rank": 1,
+        "trial": 1,
+        "mean": 475.39,
+        "values": [
+          500.0,
+          500.0,
+          376.95,
+          500.0,
+          500.0
+        ]
+      },
+      {
+        "rank": 2,
+        "trial": 3,
+        "mean": 462.82,
+        "values": [
+          340.9,
+          500.0,
+          500.0,
+          500.0,
+          473.2
+        ]
+      },
+      {
+        "rank": 3,
+        "trial": 5,
+        "mean": 458.35,
+        "values": [
+          500.0,
+          291.75,
+          500.0,
+          500.0,
+          500.0
+        ]
+      },
+      {
+        "rank": 4,
+        "trial": 6,
+        "mean": 500.0,
+        "values": [
+          500.0,
+          500.0,
+          500.0,
+          500.0,
+          500.0
+        ]
+      }
+    ],
+    "lion": [
+      {
+        "rank": 0,
+        "trial": 5,
+        "mean": 357.53000000000003,
+        "values": [
+          221.15,
+          500.0,
+          477.85,
+          500.0,
+          88.65
+        ]
+      },
+      {
+        "rank": 1,
+        "trial": 9,
+        "mean": 299.3,
+        "values": [
+          417.6,
+          500.0,
+          21.05,
+          278.75,
+          279.1
+        ]
+      },
+      {
+        "rank": 2,
+        "trial": 14,
+        "mean": 405.35,
+        "values": [
+          500.0,
+          500.0,
+          499.8,
+          250.45,
+          276.5
+        ]
+      },
+      {
+        "rank": 3,
+        "trial": 28,
+        "mean": 386.51,
+        "values": [
+          500.0,
+          411.7,
+          500.0,
+          38.25,
+          482.6
+        ]
+      },
+      {
+        "rank": 4,
+        "trial": 35,
+        "mean": 402.7,
+        "values": [
+          500.0,
+          500.0,
+          500.0,
+          13.5,
+          500.0
+        ]
+      }
+    ],
+    "lpeco": [
+      {
+        "rank": 0,
+        "trial": 0,
+        "mean": 435.09000000000003,
+        "values": [
+          500.0,
+          500.0,
+          180.1,
+          495.35,
+          500.0
+        ]
+      },
+      {
+        "rank": 1,
+        "trial": 5,
+        "mean": 455.46,
+        "values": [
+          500.0,
+          426.6,
+          500.0,
+          500.0,
+          350.7
+        ]
+      },
+      {
+        "rank": 2,
+        "trial": 12,
+        "mean": 384.69,
+        "values": [
+          388.3,
+          47.5,
+          487.65,
+          500.0,
+          500.0
+        ]
+      },
+      {
+        "rank": 3,
+        "trial": 22,
+        "mean": 500.0,
+        "values": [
+          500.0,
+          500.0,
+          500.0,
+          500.0,
+          500.0
+        ]
+      },
+      {
+        "rank": 4,
+        "trial": 24,
+        "mean": 500.0,
+        "values": [
+          500.0,
+          500.0,
+          500.0,
+          500.0,
+          500.0
+        ]
+      }
+    ]
+  }
+}
